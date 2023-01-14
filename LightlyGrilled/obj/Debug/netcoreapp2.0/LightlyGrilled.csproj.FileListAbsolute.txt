@@ -1,0 +1,11 @@
+/Users/alexsteel/Projects/LightlyGrilled/LightlyGrilled/bin/Debug/netcoreapp2.0/LightlyGrilled.deps.json
+/Users/alexsteel/Projects/LightlyGrilled/LightlyGrilled/bin/Debug/netcoreapp2.0/LightlyGrilled.runtimeconfig.json
+/Users/alexsteel/Projects/LightlyGrilled/LightlyGrilled/bin/Debug/netcoreapp2.0/LightlyGrilled.runtimeconfig.dev.json
+/Users/alexsteel/Projects/LightlyGrilled/LightlyGrilled/bin/Debug/netcoreapp2.0/LightlyGrilled.dll
+/Users/alexsteel/Projects/LightlyGrilled/LightlyGrilled/bin/Debug/netcoreapp2.0/LightlyGrilled.pdb
+/Users/alexsteel/Projects/LightlyGrilled/LightlyGrilled/obj/Debug/netcoreapp2.0/LightlyGrilled.csprojAssemblyReference.cache
+/Users/alexsteel/Projects/LightlyGrilled/LightlyGrilled/obj/Debug/netcoreapp2.0/LightlyGrilled.csproj.CoreCompileInputs.cache
+/Users/alexsteel/Projects/LightlyGrilled/LightlyGrilled/obj/Debug/netcoreapp2.0/LightlyGrilled.AssemblyInfoInputs.cache
+/Users/alexsteel/Projects/LightlyGrilled/LightlyGrilled/obj/Debug/netcoreapp2.0/LightlyGrilled.AssemblyInfo.cs
+/Users/alexsteel/Projects/LightlyGrilled/LightlyGrilled/obj/Debug/netcoreapp2.0/LightlyGrilled.dll
+/Users/alexsteel/Projects/LightlyGrilled/LightlyGrilled/obj/Debug/netcoreapp2.0/LightlyGrilled.pdb

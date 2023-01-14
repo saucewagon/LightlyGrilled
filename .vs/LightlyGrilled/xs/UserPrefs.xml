@@ -1,0 +1,22 @@
+﻿<Properties StartupConfiguration="{C7DF312E-F7D2-469A-8A72-D036CD0CBC0C}|Default">
+  <MonoDevelop.Ide.Workbench ActiveDocument="LightlyGrilled/Program.cs">
+    <Files>
+      <File FileName="LightlyGrilled.Tests/UnitTest1.cs" Line="12" Column="18" />
+      <File FileName="LightlyGrilled/Program.cs" Line="5" Column="12" />
+    </Files>
+    <Pads>
+      <Pad Id="MonoDevelop.UnitTesting.TestPad">
+        <State name="__root__">
+          <Node name="LightlyGrilled" expanded="True" selected="True" />
+        </State>
+      </Pad>
+    </Pads>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.ItemProperties.LightlyGrilled PreferredExecutionTarget="MonoDevelop.Default" />
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MultiItemStartupConfigurations />
+</Properties>

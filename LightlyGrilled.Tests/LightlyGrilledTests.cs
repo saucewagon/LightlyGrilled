@@ -7,15 +7,23 @@ namespace LightlyGrilled.Tests
     public class UnitTest1
     {
         [Fact]
-        public void TwoSumTests()
+        public void TwoSumTest1()
         {
             TwoSumTestBase(new int[] { 2, 7, 11, 15 }, 9, new int[] { 0, 1 });
+        }
+        [Fact]
+        public void TwoSumTest2()
+        {
             TwoSumTestBase(new int[] { 3, 2, 4 }, 6, new int[] { 1, 2 });
+        }
+        [Fact]
+        public void TwoSumTest3()
+        {
             TwoSumTestBase(new int[] { 3, 3 }, 6, new int[] { 0, 1 });
         }
         public void TwoSumTestBase(int[] nums, int target, int[] expectedResult)
         {
-            int[] actual = LightlyGrilledQuestions.TwoSum(new int[] { 2, 7, 11, 15 }, 9);
+            int[] actual = LightlyGrilledQuestions.TwoSum(nums, target);
             Assert.NotNull(actual);
             Assert.Equal(2, actual.Length);
             Assert.Equal(expectedResult, actual);

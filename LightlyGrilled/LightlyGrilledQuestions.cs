@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace LightlyGrilled
 {
@@ -8,14 +9,6 @@ namespace LightlyGrilled
         {
             Console.WriteLine("Hello World!");
         }
-        public static int[] TwoSum(int[] nums, int target)
-        {
-            int[] result = new int[2];
-            result[0] = 0;
-            result[1] = 1;
-            return result;
-        }
-
         /* TWO SUM
          
         Problem:        
@@ -29,10 +22,49 @@ namespace LightlyGrilled
         Output: [0,1]
         Explanation: Because nums[0] + nums[1] == 9, we return [0, 1].
 
-        Solution:
-
-        Time complexity: 
+        Time complexity: O(n)
+        Space complexity: O(n)
          */
-         
+
+        public static int[] TwoSum(int[] nums, int target)
+        {
+            int[] result = new int[2];
+            var valueToIndicesDictionary = new Dictionary<int, HashSet<int>>();
+
+            for(int i = 0; i < nums.Length; i++)
+            {
+                if (valueToIndicesDictionary.ContainsKey(nums[i]) == false)
+                {
+                    valueToIndicesDictionary.Add(nums[i], new HashSet<int>() { i });
+                }
+                else
+                {
+                    var indices = valueToIndicesDictionary[nums[i]];
+                    indices.Add(i);
+                    valueToIndicesDictionary[nums[i]] = indices;
+                }
+            }
+
+            for(int i = 0; i < nums.Length; i++)
+            {
+                int complement = target - nums[i];
+
+                if (valueToIndicesDictionary.ContainsKey(complement))
+                {
+                    var indices = valueToIndicesDictionary[complement];
+
+                    foreach(int index in indices)
+                    {
+                        if (index != i)
+                        {
+                            result[0] = i;
+                            result[1] = index;
+                            return result;
+                        }
+                    }
+                }
+            }
+            return result;
+        }
     }
 }

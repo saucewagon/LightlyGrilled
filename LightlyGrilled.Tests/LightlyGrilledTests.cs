@@ -4,8 +4,9 @@ using LightlyGrilled;
 
 namespace LightlyGrilled.Tests
 {
-    public class UnitTest1
+    public class LightlyGrilledTests
     {
+        #region TwoSum
         [Fact]
         public void TwoSumTest1()
         {
@@ -28,5 +29,24 @@ namespace LightlyGrilled.Tests
             Assert.Equal(2, actual.Length);
             Assert.Equal(expectedResult, actual);
         }
+        #endregion
+        #region ContainsDuplicate
+
+        [Theory]
+        [InlineData(1,2,3,1)]
+        [InlineData(1, 1, 1, 3, 3, 4, 3, 2, 4, 2)]
+        public void ContainsDuplicatePositiveTest(params int[] nums)
+        {
+            Assert.True(LightlyGrilledQuestions.ContainsDuplicate(nums));
+        }
+        [Theory]
+        [InlineData(1, 2, 3, 4)]
+        [InlineData(1)]
+        public void ContainsDuplicateNegativeTest(params int[] nums)
+        {
+            Assert.False(LightlyGrilledQuestions.ContainsDuplicate(nums));
+        }
+
+        #endregion
     }
 }

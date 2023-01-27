@@ -66,5 +66,36 @@ namespace LightlyGrilled
             }
             return result;
         }
+
+        /*
+         * CONTAINS DUPLICATE
+         * 
+         * Given an integer array nums, return true if any value appears at least twice in the array, 
+         * and return false if every element is distinct.
+         * 
+         * Input: nums = [1,2,3,1]
+         * Output: true
+         * 
+         * Time complexity: O(n)
+         * Space complexity: O(n)    
+         */
+
+        public static bool ContainsDuplicate(int[] nums)
+        {
+            var duplicateSet = new HashSet<int>();
+
+            for(int i = 0; i < nums.Length; i++)
+            {
+                if (duplicateSet.Contains(nums[i]))
+                {
+                    return true;
+                }
+                else
+                {
+                    duplicateSet.Add(nums[i]);
+                }
+            }
+            return false;
+        }
     }
 }

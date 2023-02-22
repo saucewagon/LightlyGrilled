@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+
 namespace LightlyGrilled
 {
 	public class TwoPointers
@@ -29,6 +31,28 @@ namespace LightlyGrilled
                 }
             }
             return pair;
+        }
+        public static int SeparateDuplicates(int[] nums)
+        {
+            int beginningOfBadSectionOfArray = 1;
+
+            for(int i = 1; i < nums.Length; i++)
+            {
+                int currentElement = nums[i];
+                int endOfGoodSectionOfArray = beginningOfBadSectionOfArray - 1;
+                int lastGoodElement = nums[endOfGoodSectionOfArray];
+
+                if (lastGoodElement == currentElement) // if we see a duplicate, i keeps marching through the array 
+                {
+                    continue;
+                }
+                else
+                {
+                    nums[beginningOfBadSectionOfArray] = nums[i]; // we've found a good element, move it back
+                    beginningOfBadSectionOfArray++; // bad section gets smaller, good section gets bigger 
+                }
+            }
+            return beginningOfBadSectionOfArray;
         }
     }
 }

@@ -27,6 +27,22 @@ namespace LightlyGrilled.Tests
             Assert.Equal(2, actual.Length);
             Assert.Equal(expectedResult, actual);
         }
+
+        [Fact]
+        public void SeparateDuplicatesTest1()
+        {
+            SeparateDuplicatesTestBase(new int[] { 2, 3, 3, 3, 6, 9, 9 }, 4);
+        }
+        [Fact]
+        public void SeparateDuplicatesTest2()
+        {
+            SeparateDuplicatesTestBase(new int[] { 2, 2, 2, 11 }, 2);
+        }
+        public void SeparateDuplicatesTestBase(int[] nums, int expectedLength)
+        {
+            int actual = TwoPointers.SeparateDuplicates(nums);
+            Assert.Equal(actual, expectedLength);
+        }
     }
 }
 

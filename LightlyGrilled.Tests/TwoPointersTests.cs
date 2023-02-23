@@ -43,6 +43,26 @@ namespace LightlyGrilled.Tests
             int actual = TwoPointers.SeparateDuplicates(nums);
             Assert.Equal(actual, expectedLength);
         }
+        [Fact]
+        public void RemovesKeysTest1()
+        {
+            RemovesKeysTestBase(new int[] { 3, 2, 3, 6, 3, 10, 9, 3 }, 3 , 4);
+        }
+        [Fact]
+        public void RemovesKeysTest2()
+        {
+            RemovesKeysTestBase(new int[] { 2, 11, 2, 2, 1 }, 2, 2);
+        }
+        [Fact]
+        public void RemovesKeysTest3()
+        {
+            RemovesKeysTestBase(new int[] { 7, 7, 7, 7, 7, 1, 1 }, 7, 2);
+        }
+        public void RemovesKeysTestBase(int[] nums, int key, int expectedLength)
+        {
+            int actual = TwoPointers.RemoveKeyFromArray(nums, key);
+            Assert.Equal(actual, expectedLength);
+        }
     }
 }
 

@@ -54,6 +54,21 @@ namespace LightlyGrilled
             }
             return beginningOfBadSectionOfArray;
         }
+        public static int RemoveKeyFromArray(int[] nums, int key)
+        {
+            int startIndexOfBadPartOfArray = 0;
+
+            for(int i = 0; i < nums.Length; i++)
+            {
+                if (nums[i] != key)
+                {
+                    nums[startIndexOfBadPartOfArray] = nums[i];
+                    startIndexOfBadPartOfArray++;
+                    nums[i] = key;
+                }
+            }
+            return startIndexOfBadPartOfArray;
+        }
     }
 }
 

@@ -69,6 +69,31 @@ namespace LightlyGrilled
             }
             return startIndexOfBadPartOfArray;
         }
+        public static int[] SquareSortedArray(int[] nums)
+        {
+            int[] squared = new int[nums.Length];
+
+            int startPointer = 0;
+            int endPointer = nums.Length - 1;
+            int i = nums.Length - 1;
+
+            while (i >= 0)
+            {
+                if (Math.Abs(nums[startPointer]) > Math.Abs(nums[endPointer]))
+                {
+                    squared[i] = (int)Math.Pow(nums[startPointer], 2);
+                    startPointer++;
+                }
+                else
+                {
+                    squared[i] = (int)Math.Pow(nums[endPointer], 2);
+                    endPointer--;
+                }
+
+                i--;
+            }
+            return squared;
+        }
     }
 }
 

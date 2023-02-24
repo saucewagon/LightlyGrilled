@@ -63,6 +63,38 @@ namespace LightlyGrilled.Tests
             int actual = TwoPointers.RemoveKeyFromArray(nums, key);
             Assert.Equal(actual, expectedLength);
         }
+        [Fact]
+        public void SquareSortedArrayTest1()
+        {
+            SquareSortedArrayBase(new int[] { -2, -1, 0, 2, 3 }, new int[] { 0, 1, 4, 4, 9 });
+        }
+        [Fact]
+        public void SquareSortedArrayTest2()
+        {
+            SquareSortedArrayBase(new int[] { -3, -1, 0, 1, 2 }, new int[] { 0, 1, 1, 4, 9 });
+        }
+        [Fact]
+        public void SquareSortedArrayTest3()
+        {
+            SquareSortedArrayBase(new int[] { -1 }, new int[] { 1 });
+        }
+        [Fact]
+        public void SquareSortedArrayTest4()
+        {
+            SquareSortedArrayBase(new int[] { -3,-2,-1}, new int[] { 1,4,9 });
+        }
+        [Fact]
+        public void SquareSortedArrayTest5()
+        {
+            SquareSortedArrayBase(new int[] { 1, 2, 3 }, new int[] { 1,4,9});
+        }
+        public void SquareSortedArrayBase(int[] nums, int[] expectedResult)
+        {
+            int[] actual = TwoPointers.SquareSortedArray(nums);
+            Assert.NotNull(actual);
+            Assert.Equal(expectedResult.Length, actual.Length);
+            Assert.Equal(expectedResult, actual);
+        }
     }
 }
 

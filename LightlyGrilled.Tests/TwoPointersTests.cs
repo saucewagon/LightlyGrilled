@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using Xunit;
 
 namespace LightlyGrilled.Tests
@@ -94,6 +95,31 @@ namespace LightlyGrilled.Tests
             Assert.NotNull(actual);
             Assert.Equal(expectedResult.Length, actual.Length);
             Assert.Equal(expectedResult, actual);
+        }
+        [Fact]
+        public void TripletSumToZeroTest1()
+        {
+            List<List<int>> expected = new List<List<int>>();
+            expected.Add(new List<int>() { -3, 1, 2 });
+            expected.Add(new List<int>() { -2, 0, 2 });
+            expected.Add(new List<int>() { -2, 1, 1 });
+            expected.Add(new List<int>() { -1, 0, 1 });
+
+            TripletSumToZeroTestBase(new int[] { -3, 0, 1, 2, -1, 1, -2 }, expected);
+        }
+        [Fact]
+        public void TripletSumToZeroTest2()
+        {
+            List<List<int>> expected = new List<List<int>>();
+            expected.Add(new List<int>() { -5, 2, 3 });
+            expected.Add(new List<int>() { -2, -1, 3 });
+
+            TripletSumToZeroTestBase(new int[] { -5, 2, -1, -2, 3 }, expected);
+        }
+        private void TripletSumToZeroTestBase(int[] nums, List<List<int>> expected)
+        {
+            List<List<int>> result = TwoPointers.TripletSumToZero(nums);
+            Assert.Equal(expected, result);
         }
     }
 }

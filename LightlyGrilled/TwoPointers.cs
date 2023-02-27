@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace LightlyGrilled
 {
@@ -10,6 +12,7 @@ namespace LightlyGrilled
             int endPointer = nums.Length - 1;
             int startPointer = 0;
             int[] pair = new int[2];
+            bool foundAPair = false;
 
             while (startPointer != endPointer)
             {
@@ -17,6 +20,7 @@ namespace LightlyGrilled
 
                 if (currentSum == target)
                 {
+                    foundAPair = true;
                     pair[0] = startPointer;
                     pair[1] = endPointer;
                     return pair;
@@ -29,6 +33,10 @@ namespace LightlyGrilled
                 {
                     endPointer--;
                 }
+            }
+            if (!foundAPair)
+            {
+                throw new Exception();
             }
             return pair;
         }
@@ -94,6 +102,45 @@ namespace LightlyGrilled
             }
             return squared;
         }
+        public static List<List<int>> TripletSumToZero(int[] nums)
+        {
+            var triplets = new List<List<int>>();
+            Array.Sort(nums);
+
+            for(int i = 0; i < nums.Length - 2; i++)
+            {
+                // look behind to see if this is a duplicate, if so, skip
+                if (i > 0 && nums[i] == nums[i - 1]) { continue; }
+                int target = -1 * nums[i];
+
+                searchPair(nums, target, i + 1, triplets);
+            }
+            return triplets;
+        }
+
+        private static void searchPair(int[] nums, int target, int leftIndex, List<List<int>> triplets)
+        {
+            int rightIndex = nums.Length - 1;
+
+            while (leftIndex < rightIndex)
+            {
+                int currentSum = nums[leftIndex] + nums[rightIndex];
+
+                if (currentSum == target)
+                {
+                    triplets.Add(new List<int>() { -1 * target, nums[leftIndex], nums[rightIndex] });
+                    leftIndex++;
+                    rightIndex--;
+
+                    while (leftIndex < rightIndex && nums[leftIndex] == nums[leftIndex - 1]) leftIndex++;
+                    while (leftIndex < rightIndex && nums[rightIndex] == nums[rightIndex + 1]) rightIndex--;
+                }
+                else if (currentSum < target)
+                {
+                    leftIndex++;
+                }
+                else rightIndex--;
+            }
+        }
     }
 }
-

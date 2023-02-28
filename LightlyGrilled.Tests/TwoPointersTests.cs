@@ -121,6 +121,26 @@ namespace LightlyGrilled.Tests
             List<List<int>> result = TwoPointers.TripletSumToZero(nums);
             Assert.Equal(expected, result);
         }
+        [Fact]
+        public void TripletSumCloseToTargetTest1()
+        {
+            TripletSumCloseToTargetTestBase(new int[] { -2, 0, 1, 2 }, 2, 1);
+        }
+        [Fact]
+        public void TripletSumCloseToTargetTest2()
+        {
+            TripletSumCloseToTargetTestBase(new int[] { -3, -1, 1, 2 }, 1, 0);
+        }
+        [Fact]
+        public void TripletSumCloseToTargetTest3()
+        {
+            TripletSumCloseToTargetTestBase(new int[] { 1, 0, 1, 1 }, 100, 3);
+        }
+        private void TripletSumCloseToTargetTestBase(int[] nums, int target, int expected)
+        {
+            int result = TwoPointers.TripletSumCloseToTarget(nums, target);
+            Assert.Equal(expected, result);
+        }
     }
 }
 

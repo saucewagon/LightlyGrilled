@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography;
 
 namespace LightlyGrilled
 {
@@ -117,7 +118,6 @@ namespace LightlyGrilled
             }
             return triplets;
         }
-
         private static void searchPair(int[] nums, int target, int leftIndex, List<List<int>> triplets)
         {
             int rightIndex = nums.Length - 1;
@@ -141,6 +141,33 @@ namespace LightlyGrilled
                 }
                 else rightIndex--;
             }
+        }
+        public static int TripletSumCloseToTarget(int[] nums, int target)
+        {
+            Array.Sort(nums);
+            int smallestDifferenceToTarget = int.MaxValue;
+
+            for(int i = 0; i < nums.Length - 2; i++)
+            {
+                int leftIndex = i + 1;
+                int rightIndex = nums.Length - 1;
+
+                while (leftIndex < rightIndex)
+                {
+                    int currentDistanceToTarget = target - nums[i] - nums[leftIndex] - nums[rightIndex];
+                    if (currentDistanceToTarget == 0) return target;
+
+                    if (Math.Abs(currentDistanceToTarget) < Math.Abs(smallestDifferenceToTarget)
+                        || (Math.Abs(currentDistanceToTarget) == Math.Abs(smallestDifferenceToTarget) &&
+                        currentDistanceToTarget > smallestDifferenceToTarget))
+                    {
+                        smallestDifferenceToTarget = currentDistanceToTarget;
+                    }
+                    if (currentDistanceToTarget > 0) leftIndex++;
+                    else rightIndex--;
+                }
+            }
+            return target-smallestDifferenceToTarget;
         }
     }
 }

@@ -169,5 +169,29 @@ namespace LightlyGrilled
             }
             return target-smallestDifferenceToTarget;
         }
+
+        public static int TripletsWithSmallerSum(int[] nums, int target)
+        {
+            Array.Sort(nums);
+            int numTriplets = 0;
+
+            for(int i = 0; i < nums.Length - 2; i++)
+            {
+                int leftIndex = i + 1;
+                int rightIndex = nums.Length - 1;
+
+                while (leftIndex < rightIndex)
+                {
+                    int currentSum = nums[i] + nums[leftIndex] + nums[rightIndex];
+                    if (currentSum < target)
+                    {
+                        numTriplets+= rightIndex - leftIndex; // The number of triplets between the right and left indexes are guaranteed to be less than target
+                        leftIndex++;
+                    }
+                    else rightIndex--;
+                }
+            }
+            return numTriplets;
+        }
     }
 }

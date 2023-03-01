@@ -156,6 +156,43 @@ namespace LightlyGrilled.Tests
             int result = TwoPointers.TripletsWithSmallerSum(nums, target);
             Assert.Equal(expected, result);
         }
+        [Fact]
+        public void SubarraysWithProductLessThanTargetTest1()
+        {
+            List<List<int>> expected = new List<List<int>>();
+            expected.Add(new List<int>() { 2 });
+            expected.Add(new List<int>() { 5 });
+            expected.Add(new List<int>() { 2,5 });
+            expected.Add(new List<int>() { 3 });
+            expected.Add(new List<int>() { 5,3 });
+            expected.Add(new List<int>() { 10 });
+
+            SubarraysWithProductLessThanTargetTestBase(new int[] { 2, 5, 3, 10 }, 30, expected);
+        }
+        [Fact]
+        public void SubarraysWithProductLessThanTargetTest2()
+        {
+            List<List<int>> expected = new List<List<int>>();
+            expected.Add(new List<int>() { 8 });
+            expected.Add(new List<int>() { 2 });
+            expected.Add(new List<int>() { 8,2 });
+            expected.Add(new List<int>() { 6 });
+            expected.Add(new List<int>() { 2,6 });
+            expected.Add(new List<int>() { 5 });
+            expected.Add(new List<int>() { 6,5 });
+
+
+            SubarraysWithProductLessThanTargetTestBase(new int[] { 8,2,6,5 }, 50, expected);
+        }
+        private void SubarraysWithProductLessThanTargetTestBase(int[] nums, int target, List<List<int>> expected)
+        {
+            List<List<int>> result = TwoPointers.SubarraysWithProductLessThanTarget(nums, target);
+            Assert.Equal(expected.Count, result.Count);
+            foreach (var list in expected)
+            {
+                Assert.True(expected.Contains(list));
+            }
+        }
     }
 }
 

@@ -193,5 +193,38 @@ namespace LightlyGrilled
             }
             return numTriplets;
         }
+
+        public static List<List<int>> SubarraysWithProductLessThanTarget(int[] nums, int target)
+        {
+            var subarrays = new List<List<int>>();
+            for (int i = 0; i < nums.Length; i++)
+            {
+                int currentProduct = nums[i] * 1;
+                int j = i + 1;
+                var currentSubarray = new List<int>();
+                if (currentProduct < target)
+                {
+                    subarrays.Add(new List<int>() { nums[i] });
+                    currentSubarray.Add(nums[i]);
+                }
+                while (j < nums.Length && currentProduct < target)
+                {
+                    currentProduct = currentProduct * nums[j];
+                    if (currentProduct < target)
+                    {
+                        currentSubarray.Add(nums[j]);
+                    }
+                    j++;
+                }
+                if (currentSubarray.Count > 1)
+                {
+                    var subarrayToAdd = new List<int>(currentSubarray);
+                    subarrays.Add(subarrayToAdd);
+                    currentSubarray.Clear();
+                }
+
+            }
+            return subarrays;
+        }
     }
 }

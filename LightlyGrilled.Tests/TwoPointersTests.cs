@@ -181,7 +181,6 @@ namespace LightlyGrilled.Tests
             expected.Add(new List<int>() { 5 });
             expected.Add(new List<int>() { 6,5 });
 
-
             SubarraysWithProductLessThanTargetTestBase(new int[] { 8,2,6,5 }, 50, expected);
         }
         private void SubarraysWithProductLessThanTargetTestBase(int[] nums, int target, List<List<int>> expected)
@@ -192,6 +191,18 @@ namespace LightlyGrilled.Tests
             {
                 Assert.True(expected.Contains(list));
             }
+        }
+        [Fact]
+        public void DutchNationalFlagTest1()
+        {
+            DutchNationalFlagTestBase(new int[] { 1, 0, 2, 1, 0 }, new int[] { 0,0,1,1,2 });
+        }
+        public void DutchNationalFlagTestBase(int[] nums, int[] expectedResult)
+        {
+            int[] actual = TwoPointers.DutchNationalFlag(nums);
+            Assert.NotNull(actual);
+            Assert.Equal(actual.Length, expectedResult.Length);
+            Assert.Equal(actual, expectedResult);
         }
     }
 }

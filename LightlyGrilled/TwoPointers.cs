@@ -226,5 +226,38 @@ namespace LightlyGrilled
             }
             return subarrays;
         }
+
+        public static int[] DutchNationalFlag(int[] nums)
+        {
+            int leftIndex = 0;
+            int rightIndex = nums.Length - 1;
+            int i = 0;
+
+            while (i <= rightIndex)
+            {
+                if (nums[i] == 0)
+                {
+                    swap(nums, i, leftIndex);
+                    i++;
+                    leftIndex++;
+                }
+                else if (nums[i] == 1)
+                {
+                    i++;
+                }
+                else
+                {
+                    swap(nums, i, rightIndex);
+                    rightIndex--;
+                }
+            }
+            return nums;
+        }
+        private static void swap(int[] nums, int indexA, int indexB)
+        {
+            int tmp = nums[indexA];
+            nums[indexA] = nums[indexB];
+            nums[indexB] = tmp;
+        }
     }
 }

@@ -204,6 +204,27 @@ namespace LightlyGrilled.Tests
             Assert.Equal(actual.Length, expectedResult.Length);
             Assert.Equal(actual, expectedResult);
         }
+        [Fact]
+        public void QuadrupleSumToTargetTest1()
+        {
+            List<List<int>> expected = new List<List<int>>();
+            expected.Add(new List<int>() { -3, -1, 1, 4 });
+            expected.Add(new List<int>() { -3, 1, 1, 2 });
+            QuadrupleSumToTargetTestBase(new int[] { 4, 1, 2, -1, 1, -3 }, 1, expected);
+        }
+        [Fact]
+        public void QuadrupleSumToTargetTest2()
+        {
+            List<List<int>> expected = new List<List<int>>();
+            expected.Add(new List<int>() { -2, 0, 2, 2 });
+            expected.Add(new List<int>() { -1, 0, 1, 2 });
+            QuadrupleSumToTargetTestBase(new int[] { 2, 0, -1, 1, -2, 2 }, 2, expected);
+        }
+        private void QuadrupleSumToTargetTestBase(int[] nums, int target, List<List<int>> expected)
+        {
+            List<List<int>> result = TwoPointers.QuadrupleSumToTarget(nums, target);
+            Assert.Equal(expected, result);
+        }
     }
 }
 

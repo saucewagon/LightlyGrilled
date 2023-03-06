@@ -114,13 +114,13 @@ namespace LightlyGrilled
                 if (i > 0 && nums[i] == nums[i - 1]) { continue; }
                 int target = -1 * nums[i];
 
-                searchPair(nums, target, i + 1, triplets);
+                searchPair(nums, target, i + 1, nums.Length - 1, triplets);
             }
             return triplets;
         }
-        private static void searchPair(int[] nums, int target, int leftIndex, List<List<int>> triplets)
+        private static void searchPair(int[] nums, int target, int leftIndex, int rightIndex, List<List<int>> triplets)
         {
-            int rightIndex = nums.Length - 1;
+            //int rightIndex = nums.Length - 1;
 
             while (leftIndex < rightIndex)
             {
@@ -258,6 +258,51 @@ namespace LightlyGrilled
             int tmp = nums[indexA];
             nums[indexA] = nums[indexB];
             nums[indexB] = tmp;
+        }
+
+        public static List<List<int>> QuadrupleSumToTarget(int[] nums, int target)
+        {
+            Array.Sort(nums);
+            var quadruplets = new List<List<int>>();
+
+            for (int i = 0; i < nums.Length - 3; i++)
+            {
+                if (i > 0 && nums[i] == nums[i - 1]) continue;
+
+                for(int j = i+1; j < nums.Length - 2; j++)
+                {
+                    if (j > i + 1 && nums[j] == nums[j - 1]) continue;
+
+                    findQuadruplets(nums, target, i, j, quadruplets);
+                }
+            }
+
+            return quadruplets;
+        }
+
+        private static void findQuadruplets(int[] nums, int target, int first, int second, List<List<int>> quadruplets)
+        {
+            int leftIndex = second + 1;
+            int rightIndex = nums.Length - 1;
+            while (leftIndex < rightIndex)
+            {
+                int currentSum = nums[leftIndex] + nums[rightIndex] + nums[first] + nums[second];
+
+                if (currentSum == target)
+                {
+                    quadruplets.Add(new List<int>() { nums[first], nums[second], nums[leftIndex], nums[rightIndex] });
+                    leftIndex++;
+                    rightIndex--;
+
+                    while (leftIndex < rightIndex && nums[leftIndex] == nums[leftIndex - 1]) leftIndex++;
+                    while (leftIndex < rightIndex && nums[rightIndex] == nums[rightIndex + 1]) rightIndex--;
+                }
+                else if (currentSum < target)
+                {
+                    leftIndex++;
+                }
+                else rightIndex--;
+            }
         }
     }
 }

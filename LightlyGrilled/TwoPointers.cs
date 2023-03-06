@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Security.Cryptography;
+using System.Text;
 
 namespace LightlyGrilled
 {
@@ -303,6 +304,42 @@ namespace LightlyGrilled
                 }
                 else rightIndex--;
             }
+        }
+
+        public static bool CompareStringsBackspace(string s1, string s2)
+        {
+            string s1Removed = removeBackspaces(s1);
+            string s2Removed = removeBackspaces(s2);
+            return s1Removed.Equals(s2Removed);
+        }
+
+        private static string removeBackspaces(string s)
+        {
+            StringBuilder sb = new StringBuilder();
+
+            int i = s.Length - 1;
+            int backspaceCount = 0;
+            while (i >= 0)
+            {
+                if (s[i] == '#')
+                {
+                    backspaceCount++;
+                    i--;
+                }
+                else
+                {
+                    if (backspaceCount > 0)
+                    {
+                        backspaceCount--;
+                        i--;
+                        continue;
+                    }
+       
+                    sb.Insert(0, s[i]);
+                    i--;
+                }
+            }
+            return sb.ToString();
         }
     }
 }

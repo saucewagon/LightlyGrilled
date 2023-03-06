@@ -225,6 +225,14 @@ namespace LightlyGrilled.Tests
             List<List<int>> result = TwoPointers.QuadrupleSumToTarget(nums, target);
             Assert.Equal(expected, result);
         }
+        [Fact]
+        public void CompareStringsBackspaceTests()
+        {
+            Assert.True(TwoPointers.CompareStringsBackspace("xy#z", "xzz#"));
+            Assert.False(TwoPointers.CompareStringsBackspace("xy#z", "xyz#"));
+            Assert.True(TwoPointers.CompareStringsBackspace("xp#", "xyz##"));
+            Assert.True(TwoPointers.CompareStringsBackspace("xywrrmp", "xywrrmu#p"));
+        }
     }
 }
 

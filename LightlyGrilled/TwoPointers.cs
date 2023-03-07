@@ -341,5 +341,33 @@ namespace LightlyGrilled
             }
             return sb.ToString();
         }
+
+        public static int MinimumWindowSort(int[] nums)
+        {
+            int low = 0;
+            int high = nums.Length - 1;
+
+            while (low < nums.Length - 1 && nums[low] <= nums[low + 1]) low++;
+            while (high > 0 && nums[high] >= nums[high - 1]) high--;
+            if (low == nums.Length - 1) return 0;
+
+            int maxValOfSubarray = Int32.MinValue;
+            int minValOfSubarray = Int32.MaxValue;
+
+            for(int i = low; i <= high; i++)
+            {
+                maxValOfSubarray = Math.Max(maxValOfSubarray, nums[i]);
+                minValOfSubarray = Math.Min(minValOfSubarray, nums[i]);
+            }
+            while(low > 0 && nums[low - 1] > minValOfSubarray)
+            {
+                low--;
+            }
+            while (high < nums.Length - 1 && nums[high + 1] < maxValOfSubarray)
+            {
+                high++;
+            }
+            return high - low + 1;
+        }
     }
 }

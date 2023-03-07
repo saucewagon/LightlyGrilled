@@ -233,6 +233,22 @@ namespace LightlyGrilled.Tests
             Assert.True(TwoPointers.CompareStringsBackspace("xp#", "xyz##"));
             Assert.True(TwoPointers.CompareStringsBackspace("xywrrmp", "xywrrmu#p"));
         }
+
+        [Fact]
+        public void MinimumWindowSortTest1()
+        {
+            MinimumWindowSortTestBase(new int[] { 1, 2, 5, 3, 7, 10, 9, 12 }, 5);
+        }
+        [Fact]
+        public void MinimumWindowSortTest2()
+        {
+            MinimumWindowSortTestBase(new int[] { 1, 3, 2, 0, -1, 7, 10 }, 5);
+        }
+        public void MinimumWindowSortTestBase(int[] nums, int expectedLength)
+        {
+            int actual = TwoPointers.MinimumWindowSort(nums);
+            Assert.Equal(expectedLength, actual);
+        }
     }
 }
 

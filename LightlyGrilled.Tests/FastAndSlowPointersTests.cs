@@ -65,6 +65,13 @@ namespace LightlyGrilled.Tests
             PrintLinkedList(head);
             Assert.Equal(3, FastAndSlowPointers.GetStartOfLinkedListCycle(head).Value);
         }
+        [Fact]
+        public void HappyNumberTests()
+        {
+            Assert.True(FastAndSlowPointers.IsHappyNumber(23));
+            Assert.False(FastAndSlowPointers.IsHappyNumber(12));
+        }
+
         private void PrintLinkedList(ListNode head)
 		{
 			int count = 0;

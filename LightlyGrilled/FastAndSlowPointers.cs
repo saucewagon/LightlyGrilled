@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+
 namespace LightlyGrilled
 {
 	public class ListNode
@@ -86,6 +88,49 @@ namespace LightlyGrilled
 
 			}
 			return count;
+        }
+
+        public static bool IsHappyNumber(int num)
+        {
+			// while something
+			// iterate over each digit to calculate the happy number
+			// if sum is 1 return true
+			// else add to list
+			// if the sum has been seen before return false
+
+			var seenBefore = new HashSet<int>();
+			int sum = num;
+
+			while (true)
+			{
+				sum = GetSquaredSumOfDigits(sum);
+				if (sum == 1) return true;
+				else
+				{
+					if (seenBefore.Contains(sum))
+					{
+						return false;
+					}
+					else
+					{
+						seenBefore.Add(sum);
+					}
+				}
+			}
+        }
+
+        private static int GetSquaredSumOfDigits(int num)
+        {
+			double sum = 0;
+
+			while(num > 0)
+			{
+				int rightmostDigit = num % 10;
+				sum += Math.Pow((double)rightmostDigit, 2);
+				num /= 10;
+			}
+
+			return (int)sum;
         }
     }
 }

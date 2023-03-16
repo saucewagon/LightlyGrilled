@@ -132,6 +132,21 @@ namespace LightlyGrilled
 
 			return (int)sum;
         }
+
+        public static ListNode GetMiddleNode(ListNode head)
+        {
+			ListNode middle = head;
+
+			ListNode fast = head;
+			ListNode slow = head;
+
+			while (slow != null && fast != null && fast.Next != null)
+			{
+				slow = slow.Next;
+				fast = fast.Next.Next;
+			}
+			return slow;
+        }
     }
 }
 

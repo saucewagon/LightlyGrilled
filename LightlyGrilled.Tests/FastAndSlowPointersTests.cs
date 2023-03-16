@@ -71,6 +71,13 @@ namespace LightlyGrilled.Tests
             Assert.True(FastAndSlowPointers.IsHappyNumber(23));
             Assert.False(FastAndSlowPointers.IsHappyNumber(12));
         }
+        [Fact]
+        public void MiddleOfLinkedListTest1()
+        {
+            ListNode head = CreateLinkedListWithNoCycle();
+            ListNode actualMiddleNode = FastAndSlowPointers.GetMiddleNode(head);
+            Assert.Equal(4, actualMiddleNode.Value);
+        }
 
         private void PrintLinkedList(ListNode head)
 		{

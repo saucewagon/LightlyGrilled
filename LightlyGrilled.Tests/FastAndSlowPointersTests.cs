@@ -78,7 +78,30 @@ namespace LightlyGrilled.Tests
             ListNode actualMiddleNode = FastAndSlowPointers.GetMiddleNode(head);
             Assert.Equal(4, actualMiddleNode.Value);
         }
-
+        [Fact]
+        public void PalindromeLinkedListPositiveTest()
+        {
+            ListNode head = new ListNode(2, null);
+            head.Next = new ListNode(4, null);
+            head.Next.Next = new ListNode(6, null);
+            head.Next.Next.Next = new ListNode(4, null);
+            head.Next.Next.Next.Next = new ListNode(2, null);
+            PrintLinkedList(head);
+            Assert.True(FastAndSlowPointers.LinkedListIsPalindrome(head));
+            PrintLinkedList(head);
+        }
+        [Fact]
+        public void PalindromeLinkedListNegativeTest()
+        {
+            ListNode head = new ListNode(2, null);
+            head.Next = new ListNode(4, null);
+            head.Next.Next = new ListNode(6, null);
+            head.Next.Next.Next = new ListNode(4, null);
+            head.Next.Next.Next.Next = new ListNode(2, null);
+            head.Next.Next.Next.Next.Next = new ListNode(2, null);
+            PrintLinkedList(head);
+            Assert.False(FastAndSlowPointers.LinkedListIsPalindrome(head));
+        }
         private void PrintLinkedList(ListNode head)
 		{
 			int count = 0;

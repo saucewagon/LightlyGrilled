@@ -147,6 +147,40 @@ namespace LightlyGrilled
 			}
 			return slow;
         }
+
+        public static bool LinkedListIsPalindrome(ListNode head)
+        {
+			var middleNode = GetMiddleNode(head);
+			// reverse the list starting at the node after the middlenode
+			ListNode newMiddleNodePlusOne = reverseList(middleNode.Next);
+			middleNode.Next = newMiddleNodePlusOne;
+
+			ListNode fast = middleNode.Next;
+			ListNode slow = head;
+
+			while (fast != null)
+			{
+				if (slow.Value != fast.Value) return false;
+				slow = slow.Next;
+				fast = fast.Next;
+			}
+
+			return true;
+        }
+
+        private static ListNode reverseList(ListNode middleNode)
+        {
+			ListNode prev = null;
+			ListNode trav = middleNode;
+			while (trav != null)
+			{
+				ListNode next = trav.Next;
+				trav.Next = prev;
+				prev = trav;
+				trav = next;
+			}
+			return prev;
+        }
     }
 }
 

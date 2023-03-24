@@ -86,7 +86,7 @@ namespace LightlyGrilled.Tests
             head.Next.Next = new ListNode(6, null);
             head.Next.Next.Next = new ListNode(4, null);
             head.Next.Next.Next.Next = new ListNode(2, null);
-            PrintLinkedList(head);
+            //PrintLinkedList(head);
             Assert.True(FastAndSlowPointers.LinkedListIsPalindrome(head));
             PrintLinkedList(head);
         }
@@ -99,8 +99,27 @@ namespace LightlyGrilled.Tests
             head.Next.Next.Next = new ListNode(4, null);
             head.Next.Next.Next.Next = new ListNode(2, null);
             head.Next.Next.Next.Next.Next = new ListNode(2, null);
-            PrintLinkedList(head);
+            //PrintLinkedList(head);
             Assert.False(FastAndSlowPointers.LinkedListIsPalindrome(head));
+        }
+        [Fact]
+        public void RearrangeLinkedListTest()
+        {
+            ListNode head = new ListNode(1, null);
+            head.Next = new ListNode(2, null);
+            head.Next.Next = new ListNode(3, null);
+            head.Next.Next.Next = new ListNode(4, null);
+            head.Next.Next.Next.Next = new ListNode(5, null);
+            head.Next.Next.Next.Next.Next = new ListNode(6, null);
+
+            ListNode rearrangedHead = FastAndSlowPointers.RearrangeLinkedList(head);
+
+            Assert.Equal(rearrangedHead.Value, 1);
+            Assert.Equal(rearrangedHead.Next.Value, 6);
+            Assert.Equal(rearrangedHead.Next.Next.Value, 2);
+            Assert.Equal(rearrangedHead.Next.Next.Next.Value, 5);
+            Assert.Equal(rearrangedHead.Next.Next.Next.Next.Value, 3);
+            Assert.Equal(rearrangedHead.Next.Next.Next.Next.Next.Value, 4);
         }
         private void PrintLinkedList(ListNode head)
 		{

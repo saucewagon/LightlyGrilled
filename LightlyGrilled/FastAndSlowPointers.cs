@@ -168,18 +168,45 @@ namespace LightlyGrilled
 			return true;
         }
 
-        private static ListNode reverseList(ListNode middleNode)
+        private static ListNode reverseList(ListNode head)
         {
 			ListNode prev = null;
-			ListNode trav = middleNode;
-			while (trav != null)
+
+			while (head != null)
 			{
-				ListNode next = trav.Next;
-				trav.Next = prev;
-				prev = trav;
-				trav = next;
+				ListNode next = head.Next;
+                head.Next = prev;
+				prev = head;
+                head = next;
 			}
 			return prev;
+        }
+
+        public static ListNode RearrangeLinkedList(ListNode head)
+        {
+            var middleNode = GetMiddleNode(head);
+            // reverse the list starting at the node after the middlenode
+            ListNode newMiddleNodePlusOne = reverseList(middleNode);
+            //m////iddleNode.Next = newMiddleNodePlusOne;
+
+            ListNode fast = newMiddleNodePlusOne;
+            ListNode slow = head;
+
+            while (slow != null && fast != null)
+            {
+				ListNode tmp = slow.Next;
+				slow.Next = fast;
+				slow = tmp;
+
+                tmp = fast.Next;
+                fast.Next = slow;
+				fast = tmp;
+            }
+			if (slow != null)
+			{
+				slow.Next = null;
+			}
+			return head;
         }
     }
 }

@@ -121,6 +121,19 @@ namespace LightlyGrilled.Tests
             Assert.Equal(rearrangedHead.Next.Next.Next.Next.Value, 3);
             Assert.Equal(rearrangedHead.Next.Next.Next.Next.Next.Value, 4);
         }
+        [Theory]
+        [InlineData(1, 2, -1, 2, 2)]
+        [InlineData(2, 2, -1, 2)]
+        public void CycleInCircularArrayPositiveTest(params int[] nums)
+        {
+            Assert.True(FastAndSlowPointers.CycleInCircularArray(nums));
+        }
+        [Theory]
+        [InlineData(2, 1, -1, -2)]
+        public void CycleInCircularArrayNegativeTest(params int[] nums)
+        {
+            Assert.False(FastAndSlowPointers.CycleInCircularArray(nums));
+        }
         private void PrintLinkedList(ListNode head)
 		{
 			int count = 0;

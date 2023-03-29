@@ -185,9 +185,7 @@ namespace LightlyGrilled
         public static ListNode RearrangeLinkedList(ListNode head)
         {
             var middleNode = GetMiddleNode(head);
-            // reverse the list starting at the node after the middlenode
             ListNode newMiddleNodePlusOne = reverseList(middleNode);
-            //m////iddleNode.Next = newMiddleNodePlusOne;
 
             ListNode fast = newMiddleNodePlusOne;
             ListNode slow = head;
@@ -207,6 +205,47 @@ namespace LightlyGrilled
 				slow.Next = null;
 			}
 			return head;
+        }
+
+        public static bool CycleInCircularArray(int[] nums)
+        {
+
+			for (int i = 0; i < nums.Length; i++)
+			{
+				bool isMovingForward = nums[i] >= 0;
+				int slow = i;
+				int fast = i;
+
+				do
+				{
+					slow = findNextIndex(nums, isMovingForward, slow);
+					fast = findNextIndex(nums, isMovingForward, fast);
+					if (fast != -1)
+					{
+						fast = findNextIndex(nums, isMovingForward, fast);
+					}
+				} while (slow != -1 && fast != -1 && slow != fast);
+
+				if (slow != -1 && slow == fast)
+				{
+					return true;
+				}
+			}
+			return false;
+        }
+
+        private static int findNextIndex(int[] nums, bool isMovingForward, int currentIndex)
+        {
+			if (nums[currentIndex] >= 0 != isMovingForward) return -1;
+			int next = (currentIndex + nums[currentIndex]) % nums.Length;
+
+			if (next < 0)
+			{
+				next += nums.Length;
+			}
+			if (next == currentIndex) return -1;
+
+			return next;
         }
     }
 }
